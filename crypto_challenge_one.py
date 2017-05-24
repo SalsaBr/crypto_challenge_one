@@ -34,7 +34,7 @@ first_hit        = "(n{nx05sd51+knshl &l-$h!f-9zx%{)ke9y~hictoo}e'nfuusnl4t{v+0s
 actual_hit = "(n{nx05sd51+knshl &l-$h!f-9zx%{)ke9y~hictoo}e'nfuusnl4t{v+0sg xto(nhiif*!o[okosuy11 to a state av<:on}z`\x0fg_j$#\x7fce=y|f/uhe"
 #####CTHE = '  the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the'
 original_the_hit = "the the the the the the the the the the the the the the the the the the the the the the  state the the the the the the th"
-    P2 = "for for for for for for for for for for for for for for for for for for for for for for  state for for for for for for  e"
+P2 = "for for for for for for for for for for for for for for for for for for for for for for  state for for for for for for  e"
 
 to_hit = 'to to to to to to to to to to to to to to to to to to to to to to to to to to to to to t state to to to to to to to to to'
 th     = '  that that that that that that that that that that that that that that that that that t state   that that that that that'
@@ -66,12 +66,31 @@ plaintext2 = "the other decoded message"
 # END
 #############
 
+
+#HITS: the, state, one, up, what, product
+#HITS? have, md5, tap, unsay, will be, mimetical, era of what dr., honeypots product
+
 #############
 # Below is some code that might be useful
 #
 
 BITS = ('0', '1')
 ASCII_BITS = 7
+
+
+def make_mask(word, mask_len, offset):
+    word_len = len(word)
+    return (' ' * offset) + (word * (mask_len/word_len)) + (' ' * ((mask_len % word_len) - offset))
+
+
+def test_word(word):
+    for index in range(0, len(word)):
+        mask = make_mask(word, 121, index)
+        mask_bits = string_to_bits(mask)
+        result_bits = xor_list(seq_to_bits(C12_bits), mask_bits)
+        print(bits_to_string(result_bits))
+        print(mask)
+    
 
 def display_bits(b):
     """converts list of {0, 1}* to string"""
