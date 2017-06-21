@@ -28,40 +28,12 @@ CTHE = '  the the the the the the the the the the the the the the the the the th
 THE_BITS = '1110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100110100011001011110100'
 
 
-the_hit          = '  the the the the the the the the the the the the the the the the the the the the the for the most he the the the the the'
-
-first_hit        = "(n{nx05sd51+knshl &l-$h!f-9zx%{)ke9y~hictoo}e'nfuusnl4t{v+0sg xto(nhiif*!o[okosuy11&kn2f state f`hnon}z`\x0fg_j$#\x7fce=y|f/uhe"
-actual_hit = "(n{nx05sd51+knshl &l-$h!f-9zx%{)ke9y~hictoo}e'nfuusnl4t{v+0sg xto(nhiif*!o[okosuy11 to a state av<:on}z`\x0fg_j$#\x7fce=y|f/uhe"
-#####CTHE = '  the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the'
-original_the_hit = "the the the the the the the the the the the the the the the the the the the the the the  state the the the the the the th"
-P2 = "for for for for for for for for for for for for for for for for for for for for for for  state for for for for for for  e"
-
-to_hit = 'to to to to to to to to to to to to to to to to to to to to to to to to to to to to to t state to to to to to to to to to'
-th     = '  that that that that that that that that that that that that that that that that that t state   that that that that that'
-th     = '   that that that that that that that that that that that that that that that that that  state    that that that that tha'
-th     = '    that that that that that that that that that that that that that that that that tha  state     that that that that th'
-th     = '     that that that that that that that that that that that that that that that that th  state      that that that that t'
-
-wh =     'with with with with with with with with with with with with with with with with with wit state with with with with with w'
-wh =     ' with with with with with with with with with with with with with with with with with wi state  with with with with with '
-wh =     '  with with with with with with with with with with with with with with with with with w state   with with with with with'
-wh =     '   with with with with with with with with with with with with with with with with with  state    with with with with wit'
-wh =     '    with with with with with with with with with with with with with with with with with state     with with with with wi'
- 
-fh =     'from from from from from from from from from from from from from from from from from fro state from from from from from  '
-fh =     ' from from from from from from from from from from from from from from from from from fr state  from from from from from '
-fh =     '  from from from from from from from from from from from from from from from from from f state   from from from from from'
-fh =     '   from from from from from from from from from from from from from from from from from  state    from from from from fro'
-fh =     '    from from from from from from from from from from from from from from from from from state     from from from from fr'
-       
-
-#"the the the the the the the the the the the the the the the the the the the the the the  state the the the the the the th"
 
 #####
 # CHANGE THESE VARIABLES
 
-plaintext1 = "decoded message"
-plaintext2 = "the other decoded message"
+plaintext1 = "I visualize a time when we will be to robots what dogs are to humans, and I'm rooting for the machines.  (Claude Shannon)"
+plaintext2 = "Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin. (John von Neumann)"
 
 # END
 #############
@@ -82,6 +54,13 @@ def make_mask(word, mask_len, offset):
     word_len = len(word)
     return (' ' * offset) + (word * (mask_len/word_len)) + (' ' * ((mask_len % word_len) - offset))
 
+
+def test_phrase(word):
+    mask = make_mask(word, 121, 0)
+    mask_bits = string_to_bits(mask)
+    result_bits = xor_list(seq_to_bits(C12_bits), mask_bits)
+    print(bits_to_string(result_bits))
+    print(mask)
 
 def test_word(word):
     for index in range(0, len(word)):
