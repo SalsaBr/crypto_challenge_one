@@ -32,8 +32,8 @@ THE_BITS = '11101001101000110010111101001101000110010111101001101000110010111101
 #####
 # CHANGE THESE VARIABLES
 
-plaintext1 = "I visualize a time when we will be to robots what dogs are to humans, and I'm rooting for the machines.  (Claude Shannon)"
-plaintext2 = "Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin. (John von Neumann)"
+plaintext1 = ""
+plaintext2 = ""
 
 # END
 #############
